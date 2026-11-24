@@ -73,7 +73,7 @@ php artisan vendor:publish --tag="laravel-scanner-guard-caddy-config"
 The file is only rewritten when its content changes, through a temp file renamed over the target,
 so Caddy never reads a half-written list. Caddy only re-reads an `import`ed file on reload: the
 `reload_command` runs after a write, never otherwise. A non-zero exit or a timeout is logged, never
-thrown.
+thrown, and every sync runs it again until it succeeds (a `.reload` file next to the list marks it).
 
 `caddy reload` talks to Caddy's admin API (`localhost:2019` by default), so it needs no `sudo`: the
 PHP user (and your queue worker, if different) only has to read the Caddyfile. It parses the
