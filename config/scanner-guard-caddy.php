@@ -23,8 +23,8 @@ return [
     |
     | Caddy only re-reads an imported file on reload (or with --watch). Runs
     | (e.g. "caddy reload --config /etc/caddy/Caddyfile") only when the file
-    | content changed; a non-zero exit or a timeout is logged, never thrown.
-    | Null = don't reload.
+    | content changed; a non-zero exit or a timeout is logged, never thrown,
+    | and the next sync runs it again. Null = don't reload.
     |
     */
     'reload_command' => env('SCANNER_GUARD_CADDY_RELOAD_COMMAND'),
